@@ -42,6 +42,12 @@ backend/node_modules/
 frontend/node_modules/
 mobile/node_modules/
 backend/jspm_packages/
+backend/.idea/
+backend/.vscode/
+backend/build/
+backend/tmp/*
+backend/!tmp/.gitkeep
+backend/temp/
 
 # TypeScript v1 declaration files
 backend/typings/
