@@ -9,17 +9,13 @@ const routes = Router();
 const upload = multer(uploadConfig);
 
 routes.post("/", async (req, res) => {
-  try {
-    const { name, email, password } = req.body;
+  const { name, email, password } = req.body;
 
-    const userService = new UserService();
+  const userService = new UserService();
 
-    const user = await userService.execute({ name, email, password });
+  const user = await userService.execute({ name, email, password });
 
-    return res.json(user);
-  } catch (exception) {
-    return res.status(400).json({ error: exception.message });
-  }
+  return res.json(user);
 });
 
 routes.patch(
@@ -27,20 +23,16 @@ routes.patch(
   doAuthentication,
   upload.single("avatar"),
   async (req, res) => {
-    try {
-      const updateUserAvatar = new UserUploadService();
+    const updateUserAvatar = new UserUploadService();
 
-      const user = await updateUserAvatar.execute({
-        user_id: req.user.id,
-        avatarFilename: req.file.filename,
-      });
+    const user = await updateUserAvatar.execute({
+      user_id: req.user.id,
+      avatarFilename: req.file.filename,
+    });
 
-      delete user.password;
+    delete user.password;
 
-      return res.json(user);
-    } catch (exception) {
-      return res.status(400).json({ error: exception.message });
-    }
+    return res.json(user);
   }
 );
 
