@@ -1,15 +1,15 @@
-import Styled from "styled-components";
-import backgroudImg from "../../assets/background.png";
+import styled from "styled-components";
+import backgroudImg from "../../assets/massas_background.png";
 import { shade } from "polished";
 
-export const Container = Styled.div`
+export const Container = styled.div`
   height: 100vh;
   display: flex;
   align-items: stretch;
   background-color: #335d2d
 `;
 
-export const Content = Styled.div`
+export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -57,7 +57,7 @@ export const Content = Styled.div`
   }
 `;
 
-export const Background = Styled.div`
+export const Background = styled.div`
   flex: 1;
   background: url(${backgroudImg}) no-repeat center;
   background-size: cover;
