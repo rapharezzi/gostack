@@ -1,5 +1,5 @@
-import React, { useRef, useCallback, useContext } from "react";
-import { AuthContextImp } from "../../context/AuthContextImp";
+import React, { useRef, useCallback } from "react";
+import { useAuth } from "../../context/AuthContextImp";
 import { FiLogIn, FiMail, FiLock } from "react-icons/fi";
 import { Container, Content, Background } from "./styles";
 import logo from "../../assets/logo_2.svg";
@@ -18,7 +18,7 @@ interface SignInFormData {
 const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
-  const { signIn } = useContext(AuthContextImp);
+  const { signIn } = useAuth();
 
   const handleSubmit = useCallback(
     async (data: SignInFormData) => {
@@ -36,7 +36,7 @@ const SignIn: React.FC = () => {
           abortEarly: false,
         });
 
-        signIn({email: data.email, password: data.password});
+        signIn({ email: data.email, password: data.password });
       } catch (exception) {
         formRef.current?.setErrors(getValidationErrors(exception));
       }
